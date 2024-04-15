@@ -3,11 +3,12 @@
 $text = $_GET['text'];
 $ban = $_GET['ban'];
 
-var_dump($_GET);
-
-$banned_word = '*****';
+/* var_dump($_GET); */
 
 $text_length = strlen($text);
+
+$censored_text = str_replace($ban, '***', $text);
+$banned_length = strlen($censored_text);
 
 ?>
 
@@ -27,6 +28,7 @@ $text_length = strlen($text);
         div{
             border: 1px solid black;
             border-radius: 4px;
+            margin: 20px;
         }
     </style>
 </head>
@@ -35,6 +37,12 @@ $text_length = strlen($text);
     <h2>Text</h2>
     <p><?php echo $text ?></p>
     <h4>Length: <i><?php echo $text_length ?> characters.</i></h4>
+    </div>
+
+    <div>
+        <h2>Censored Text</h2>
+        <p><?php echo $censored_text ?></p>
+        <h4>Length: <i><?php echo $banned_length ?> characters.</i></h4>
     </div>
 </body>
 </html>
